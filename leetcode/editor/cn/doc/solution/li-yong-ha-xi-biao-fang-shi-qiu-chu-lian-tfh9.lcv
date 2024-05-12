@@ -1,0 +1,54 @@
+> Problem: [1. 两数之和](https://leetcode.cn/problems/two-sum/description/)
+
+[TOC]
+
+# 思路
+
+> 讲述看到这一题的思路
+> 首先题目已经给定了一个整数数组和一个目标值 然后找2个和为目标值的两个数并返回下标,这个时候可以利用哈希表的特点去判断重复出现的元素 降低时间复杂度
+
+# 解题方法
+
+> 描述你的解题方法
+> 1：首先创建一个关联数组作为哈希表 去存储已经遍历过的元素和他们的索引
+> 2：使用foreach去遍历整数数组，并可以去获取元素的索引和值
+> 3：通过if判断目标值如果减去当前元素的值在哈希表是否存在 存在即返回两个数的索引组成的数组 然后将当前元素存入哈希表 key作为元素值 vlaue作为索引
+> 4：最后如果说遍历的整数数组没有找到满足条件的两个数 返回null
+
+# 复杂度
+
+时间复杂度:
+
+> 添加时间复杂度, 示例： $O(n)$
+> O(n)
+
+空间复杂度:
+
+> 添加空间复杂度, 示例： $O(n)$
+> O(n)
+
+# Code
+
+* []
+
+```PHP
+class Solution {
+
+    /**
+     * @param Integer[] $nums
+     * @param Integer $target
+     * @return Integer[]
+     */
+    function twoSum($nums, $target) {
+        $hashTable = [];  // 创建一个关联数组作为哈希表 用于存储已经遍历过的元素和他们的索引
+        foreach($nums as $i=>$num) { // 遍历整数数组 并获取元素的索引和值
+            if(isset($hashTable[$target - $num])){   // 如果说目标值减去当前元素的差在哈希表存在
+                return [$hashTable[$target - $num],$i]; // 返回两个数的索引组成的数组
+            }
+        $hashTable[$num] = $i;  // 将当前元素存入哈希表 key为元素值 value为索引
+        }
+        return null; // 没有找到满足条件的两个数 返回null
+    }
+}
+```
+

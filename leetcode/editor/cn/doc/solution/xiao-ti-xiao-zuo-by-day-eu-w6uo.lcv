@@ -1,0 +1,25 @@
+> Problem: [1. 两数之和](https://leetcode.cn/problems/two-sum/description/)
+
+# Code
+
+* []
+
+```C++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i = 0;
+        int j = 1;
+        // 注意考虑数组下标不要越界
+        while(nums[i] + nums[j] != target){
+            if(j == nums.size()-1){
+                ++i;
+                j = i;
+            }
+            ++j;
+        }
+        return {i,j};
+    }
+};
+```
+

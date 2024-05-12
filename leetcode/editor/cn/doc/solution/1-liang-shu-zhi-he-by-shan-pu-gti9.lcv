@@ -1,0 +1,54 @@
+> Problem: [1. 两数之和](https://leetcode.cn/problems/two-sum/description/)
+
+[TOC]
+
+# 思路
+
+> 讲述看到这一题的思路
+> 1、双重循环暴力解
+> 2、哈希表
+
+# 复杂度
+
+时间复杂度:
+
+> 双重循环 $O(n²)$
+> 哈希表 $O(n)$
+
+空间复杂度:
+
+> 双重循环 $O(1)$
+> 哈希表 $O(n)$
+
+# Code 双重循环 用时1805ms
+
+* []
+
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        l = len(nums)
+        for i in range(l - 1):
+            for j in range(i + 1, l):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+```
+
+# Code 哈希表 用时20ms
+
+* []
+
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        hash_map = {}
+        for i, num in enumerate(nums):  # i是索引 num是元素值
+            hash_map[num] = i
+
+        for i, num in enumerate(nums):
+            j = hash_map.get(target - num)
+            if j is not None and i != j:  # 数组中同一个元素在答案里不能重复出现。
+                return [i, j]
+        return []
+```
+
